@@ -25,20 +25,6 @@ public class AlunoController<T> extends CrudDAO<T> implements Serializable {
 		System.out.println("Aluno(a) cadastrado com sucesso!");
 	}
 
-	public List<Aluno> buscarTodos() {
-
-		List<Aluno> alunos = alunoCrud.findAll(Aluno.class);
-		if (alunos.isEmpty()) {
-			System.out.println("A lista de alunos(a) está vazia!");
-
-		} else {
-			System.out.println("Lista de alunos:\n" + alunos);
-		}
-
-		return alunos;
-
-	}
-
 	public void buscarPorId() {
 
 		System.out.println("Digite o Id do aluno");
@@ -48,9 +34,30 @@ public class AlunoController<T> extends CrudDAO<T> implements Serializable {
 		if (aluno == null) {
 			System.out.println("Aluno(a) não encontrado!");
 		} else {
-			System.out.println("Aluno do ID digitado:" + aluno.getId() + "\n" + aluno.getNome());
+			System.out.println("Aluno do ID digitado:");
+			System.out.println("ID:" + aluno.getId());
+			System.out.println("Nome:" + aluno.getNome());
+			System.out.println("__________________________________\n");
+
 		}
 
+	}
+
+	public List<Aluno> buscarTodos() {
+
+		List<Aluno> alunos = alunoCrud.findAll(Aluno.class);
+		System.out.println("Lista de Alunos:");
+		if (alunos.size() > 0) {
+			alunos.forEach(aluno -> {
+				System.out.println("ID:" + aluno.getId());
+				System.out.println("Nome:" + aluno.getNome());
+				System.out.println("__________________________________\n");
+			});
+		} else {
+			System.out.println("A lista de alunos(a) está vazia!");
+		}
+
+		return alunos;
 	}
 
 	public void atualizar() {
@@ -67,7 +74,7 @@ public class AlunoController<T> extends CrudDAO<T> implements Serializable {
 			System.out.println("Digite o nome do Aluno:");
 			aluno.setNome(ler.next());
 			alunoCrud.update(aluno);
-			System.out.println("Aluno alterado com sucesso!");
+			System.out.println("Aluno atualizado com sucesso!");
 		}
 
 	}
@@ -79,10 +86,10 @@ public class AlunoController<T> extends CrudDAO<T> implements Serializable {
 
 		aluno = alunoCrud.findById(Aluno.class, aluno.getId());
 		if (aluno == null) {
-			System.out.println("A lista de alunos(a) está vazia!");
+			System.out.println("Id não encontrado!");
 		}
-		alunoCrud.remove(aluno, aluno.getId());
-		System.out.println("Aluno(a) Excluido com sucesso!");
+		alunoCrud.remove(aluno);
+		System.out.println("Aluno(a) excluido com sucesso!");
 
 	}
 

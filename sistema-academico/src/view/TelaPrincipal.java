@@ -4,7 +4,11 @@ import java.io.Serializable;
 import java.util.Scanner;
 
 import controller.AlunoController;
+import controller.MateriaController;
+import controller.ProfessorController;
 import model.Aluno;
+import model.Materia;
+import model.Professor;
 
 public class TelaPrincipal implements Serializable {
 
@@ -33,7 +37,7 @@ public class TelaPrincipal implements Serializable {
 				this.menuProfessores();
 				break;
 			case 3:
-				// this.buscarTodos();
+				this.menuMateria();
 			default:
 				System.out.println("Opção invalida!");
 				break;
@@ -86,12 +90,14 @@ public class TelaPrincipal implements Serializable {
 
 	public void menuProfessores() {
 
+		ProfessorController<Professor> p = new ProfessorController<Professor>();
+
 		s = new Scanner(System.in);
 		int opcao = 0;
 
 		do {
 
-			System.out.println("\n\n### Seja bem vindo ao Sistema de cadastro de professores! ###");
+			System.out.println("\n\n### Seja bem vindo ao modulo de cadastro de professores! ###");
 			System.out.println("\n                  =====================================");
 			System.out.println("                  |     1 - Cadastrar professor         |");
 			System.out.println("                  |     2 - Listar professor            |");
@@ -103,11 +109,70 @@ public class TelaPrincipal implements Serializable {
 			opcao = s.nextInt();
 			System.out.print("\n");
 
+			switch (opcao) {
+			case 1:
+				p.salvar();
+				break;
+			case 2:
+				p.buscarPorId();
+				break;
+			case 3:
+				p.buscarTodos();
+				break;
+			case 4:
+				p.atualizar();
+				break;
+			case 5:
+				p.delete();
+				break;
+			default:
+				System.out.println("Opção invalida!");
+				break;
+			}
 		} while (opcao != 0);
 
 	}
 
 	public void menuMateria() {
+		int opcao = 0;
+		MateriaController<Materia> m = new MateriaController<Materia>();
+
+		s = new Scanner(System.in);
+		do {
+
+			System.out.println("\n\n### Seja bem vindo ao Modulo de cadastro de materias! ###");
+			System.out.println("\n                  =====================================");
+			System.out.println("                  |     1 - Cadastrar matéria           |");
+			System.out.println("                  |     2 - Listar matéria              |");
+			System.out.println("                  |     3 - listar todas as matérias    |");
+			System.out.println("                  |     4 - Atualizar matéria           |");
+			System.out.println("                  |     5 - Deletar matéria             |");
+			System.out.println("                  |     0 - Sair                        |");
+			System.out.println("                  |======================================|\n");
+			opcao = s.nextInt();
+			System.out.print("\n");
+
+			switch (opcao) {
+			case 1:
+				m.salvar();
+				break;
+			case 2:
+				m.buscarPorId();
+				break;
+			case 3:
+				m.buscarTodos();
+				break;
+			case 4:
+				m.atualizar();
+				break;
+			case 5:
+				m.delete();
+				break;
+			default:
+				System.out.println("Opção invalida!");
+				break;
+			}
+		} while (opcao != 0);
 
 	}
 

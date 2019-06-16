@@ -8,7 +8,7 @@ public interface Dao<T> {
 
 	public void update(T entity);
 
-	public void remove(T entity, Long id);
+	public void remove(T entity);
 
 	public T findById(Class<T> entity, Long id);
 

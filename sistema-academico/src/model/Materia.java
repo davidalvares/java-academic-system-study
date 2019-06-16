@@ -8,10 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Aluno implements Serializable {
+public class Materia implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
+	private static final long serialVersionUID = 7219346048340226936L;
 	private Long id;
 	private String nome;
 
@@ -49,7 +48,7 @@ public class Aluno implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Aluno other = (Aluno) obj;
+		Materia other = (Materia) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -57,10 +56,5 @@ public class Aluno implements Serializable {
 			return false;
 		return true;
 	}
-
-	/*
-	 * @Override public String toString() { return "Nome:" + nome + "  " + "ID:" +
-	 * id + "\n"; }
-	 */
 
 }

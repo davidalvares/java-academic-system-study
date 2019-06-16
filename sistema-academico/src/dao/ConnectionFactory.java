@@ -12,5 +12,4 @@ public class ConnectionFactory {
 		return factory.createEntityManager();
 
 	}
-
 }
